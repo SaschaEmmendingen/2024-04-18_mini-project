@@ -1,36 +1,31 @@
 import { useState, useEffect } from "react";
 
 const ShoppingCard = () => {
-  // Zustand für die Todo-Liste
-  const [todos, setTodos] = useState([]);
-  // Zustand für den aktuellen Todo-Text
-  const [todoText, setTodoText] = useState("");
+  const [items, setItems] = useState([]);
 
-  // useEffect, um die Todo-Liste im Local Storage zu speichern
+  const [itemsText, setItemsText] = useState("");
+
   useEffect(() => {
-    const storedTodos = localStorage.getItem("todos");
-    if (storedTodos) {
-      setTodos(JSON.parse(storedTodos));
+    const storedItems = localStorage.getItem("items");
+    if (storedItems) {
+      setItems(JSON.parse(storedItems));
     }
   }, []);
 
-  // useEffect, um Änderungen an der Todo-Liste im Local Storage zu speichern
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
 
-  // Funktion zum Hinzufügen eines Todos
-  const addTodo = () => {
-    if (todoText.trim() !== "") {
-      setTodos([...todos, todoText]);
-      setTodoText("");
+  const addItem = () => {
+    if (itemsText.trim() !== "") {
+      setItems([...items, itemsText]);
+      setItemsText("");
     }
   };
 
-  // Funktion zum Entfernen eines Todos
-  const removeTodo = (index) => {
-    const newTodos = todos.filter((_, i) => i !== index);
-    setTodos(newTodos);
+  const removeItem = (index) => {
+    const newItems = items.filter((_, i) => i !== index);
+    setItems(newItems);
   };
 
   return (
@@ -38,15 +33,15 @@ const ShoppingCard = () => {
       <h2>Shopping Card</h2>
       <input
         type="text"
-        value={todoText}
-        onChange={(e) => setTodoText(e.target.value)}
+        value={itemsText}
+        onChange={(e) => setItemsText(e.target.value)}
       />
-      <button onClick={addTodo}>Add Todo</button>
+      <button onClick={addItem}>Add Item</button>
       <ul>
-        {todos.map((todo, index) => (
+        {items.map((item, index) => (
           <li key={index}>
-            {todo}
-            <button onClick={() => removeTodo(index)}>Remove</button>
+            {item}
+            <button onClick={() => removeItem(index)}>Remove</button>
           </li>
         ))}
       </ul>
