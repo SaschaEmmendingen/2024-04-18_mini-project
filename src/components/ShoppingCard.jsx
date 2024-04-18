@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 const ShoppingCard = () => {
   const [items, setItems] = useState([]);
-
   const [itemsText, setItemsText] = useState("");
 
   useEffect(() => {
@@ -29,19 +28,25 @@ const ShoppingCard = () => {
   };
 
   return (
-    <div>
+    <div className="card">
       <h2>Shopping Card</h2>
       <input
         type="text"
         value={itemsText}
+        className="inputField"
         onChange={(e) => setItemsText(e.target.value)}
+
       />
-      <button onClick={addItem}>Add Item</button>
-      <ul>
+      <button className="addBtn" onClick={addItem}>
+        Add Item
+      </button>
+      <ul className="list">
         {items.map((item, index) => (
-          <li key={index}>
+          <li className="items" key={index}>
             {item}
-            <button onClick={() => removeItem(index)}>Remove</button>
+            <button className="removeBtn" onClick={() => removeItem(index)}>
+              Remove
+            </button>
           </li>
         ))}
       </ul>
