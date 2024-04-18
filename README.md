@@ -1,8 +1,16 @@
-# React + Vite
+# Einkaufsliste
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dies ist eine einfache React-Anwendung, um eine Einkaufsliste zu erstellen und zu verwalten.
 
-Currently, two official plugins are available:
+## Funktionen
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Hinzufügen von Artikeln.
+- Entfernen von Artikeln.
+- Automatisches Speichern der Einkaufsliste im Local Storage.
+
+## Technologien
+
+- React
+- useState Hook
+- useEffect Hook
+- CSS Module für das Styling
