@@ -5,13 +5,6 @@ const ShoppingCard = () => {
   const [itemsText, setItemsText] = useState("");
 
   useEffect(() => {
-    const storedItems = localStorage.getItem("items");
-    if (storedItems) {
-      setItems(JSON.parse(storedItems));
-    }
-  }, []);
-
-  useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]);
 
@@ -35,7 +28,6 @@ const ShoppingCard = () => {
         value={itemsText}
         className="inputField"
         onChange={(e) => setItemsText(e.target.value)}
-
       />
       <button className="addBtn" onClick={addItem}>
         Add Item
